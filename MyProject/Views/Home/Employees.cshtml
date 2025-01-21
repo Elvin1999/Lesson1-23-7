@@ -1,0 +1,90 @@
+﻿@* @model IEnumerable<MyProject.Entities.Employee>
+@{
+    var currentDateTime = DateTime.Now.ToLongDateString();
+}
+<html>
+<head>
+</head>
+<body>
+
+    @if (Model.Any())
+    {
+        
+    <h1>We have @Model.Count() workers</h1>
+
+    @foreach (var item in Model)
+    {
+        <div style="width:40%;margin:5px;border-left:solid 2px springgreen">
+            <h2>Id : @item.Id</h2>
+            <h2>Firstname : @item.Firstname</h2>
+            <h2>Lastname : @item.Lastname</h2>
+            <hr />
+        </div>
+    }
+
+        <h1>CurrentDateTime : @currentDateTime</h1>
+
+    }
+    else
+    {
+        <h3 style="color:red;">We do not have any workers</h3>
+    }
+
+</body>
+</html> *@
+
+
+@model EmployeeListViewModel
+@{
+    var currentDateTime = DateTime.Now.ToLongDateString();
+}
+<html>
+<head>
+</head>
+<body>
+
+    @if (Model.Employees.Any())
+    {
+
+        <h1>We have @Model.Employees.Count() workers</h1>
+
+        @foreach (var item in Model.Employees)
+        {
+            <div style="width:40%;margin:5px;border-left:solid 2px springgreen">
+                <h2>Id : @item.Id</h2>
+                <h2>Firstname : @item.Firstname</h2>
+                <h2>Lastname : @item.Lastname</h2>
+                <hr />
+            </div>
+        }
+
+        <h1>CurrentDateTime : @currentDateTime</h1>
+
+    }
+    else
+    {
+        <h3 style="color:red;">We do not have any workers</h3>
+    }
+
+
+    @if (Model.Cities.Any())
+    {
+
+        <h1>We have @Model.Cities.Count() cities</h1>
+
+        @foreach (var city in Model.Cities)
+        {
+            <div style="width:40%;margin:5px;border-left:solid 2px springgreen">
+                <h2>City : @city</h2>
+                <hr />
+            </div>
+        }
+
+    }
+    else
+    {
+        <h3 style="color:red;">We do not have any cities</h3>
+    }
+
+</body>
+</html>
