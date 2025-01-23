@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
 using MyProject.Entities;
 using MyProject.Models;
@@ -100,13 +101,24 @@ namespace MyProject.Controllers
         }
 
 
-        public IActionResult Search(string word,int id=0)
+        public IActionResult Search(string word, int id = 0)
         {
             var wordResult = word.Trim().ToLower();
-            var result = employees.Where(e => (e.Id==id || id==0) && (e.Firstname.ToLower().Contains(wordResult)
+            var result = employees.Where(e => (e.Id == id || id == 0) && (e.Firstname.ToLower().Contains(wordResult)
             || e.Lastname.ToLower().Contains(wordResult)));
             return Json(result);
         }
+
+        public IActionResult Test()
+        {
+            //return Redirect("/home/employees");
+            //return RedirectToAction("employees");
+            //return RedirectToAction("employee", new { id = 1 });
+
+            var routeValue = new RouteValueDictionary(new { action = "Employee", controller = "Home", id = 1 });
+            return RedirectToRoute(routeValue);
+        }
+
         public IActionResult Privacy()
         {
             return View();
