@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MyProject.Entities;
 using MyProject.Models;
 using System;
@@ -61,7 +62,13 @@ namespace MyProject.Controllers
         {
             var vm = new EmployeeAddViewModel
             {
-                Employee = new Employee()
+                Employee = new Employee(),
+                Cities=new List<SelectListItem>
+                {
+                    new SelectListItem{Text="Baku",Value="10"},
+                    new SelectListItem{Text="Sumqayit",Value="50"},
+                    new SelectListItem{Text="Khirdalan",Value="1"},
+                }
             };
             return View(vm);
         }

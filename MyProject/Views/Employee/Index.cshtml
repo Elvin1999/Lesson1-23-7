@@ -7,7 +7,7 @@
     </div>
 }
 <section class="container bg-light">
-@*     @foreach (var item in Model.Employees)
+    @foreach (var item in Model.Employees)
     {
         <section style="width:40%;margin:5px">
             <h2>Name : @item.Firstname</h2>
@@ -17,7 +17,7 @@
             asp-route-id="@item.Id"
             >Delete Employee</a>
         </section>
-    } *@
+    }
  @*     <a class="btn btn-danger" href="/employee/delete/1">Delete Employee</a> *@ 
 
 

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
 using MyProject.Entities;
 using MyProject.Models;
+using MyProject.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,16 +14,26 @@ namespace MyProject.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ICalculator _calculator;
 
-        public HomeController(ILogger<HomeController> logger)
+        //public HomeController(ICalculator calculator)
+        //{
+        //    _calculator = calculator;
+        //}
+
+        private readonly ICalculator _calculator1;
+        private readonly ICalculator _calculator2;
+
+        public HomeController(ICalculator calculator1, ICalculator calculator2)
         {
-            _logger = logger;
+            _calculator1 = calculator1;
+            _calculator2 = calculator2;
         }
 
         public string Index()
         {
-            return "Hello From Index Action";
+            _calculator2.Calculate(100);
+            return $"Data is {_calculator1.Calculate(100)}";
         }
 
         public IActionResult Index2()

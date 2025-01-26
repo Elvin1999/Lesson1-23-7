@@ -18,6 +18,10 @@
             <input asp-for="Employee.Point" />
         </section>
         <section>
+            <label asp-for="Employee.CityId"></label>
+            <select asp-for="Employee.CityId" asp-items="Model.Cities"></select>
+        </section>
+        <section>
             <button class="btn btn-primary" type="submit">Submit</button>
         </section>
     </form>
